@@ -2,7 +2,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-
+"""A sample application to demonstrate the usage of HTML forms in Flask routes."""
 
 @app.route('/')
 def home():
@@ -124,4 +124,5 @@ def submit_pizza():
     with the following toppings: {', '.join(list_of_toppings)}
     """
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
