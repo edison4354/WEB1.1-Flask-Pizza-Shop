@@ -36,7 +36,7 @@ def simple_pizza_results():
     return "Your order has been received!"
 
 @app.route('/complex')
-def complex_order_pizza():
+def complex_pizza_order():
     """Shows a more complex pizza order form."""
 
     return """
@@ -98,7 +98,7 @@ def complex_order_pizza():
     """
 
 @app.route('/complex_results', methods=['GET', 'POST'])
-def submit_pizza():
+def complex_pizza_results():
     """Processes & shows results for a complex pizza order form."""
 
     # TODO: Uncomment the following lines to see the form key/value pairs
