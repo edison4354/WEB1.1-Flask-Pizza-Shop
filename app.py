@@ -18,7 +18,7 @@ def home():
 
 
 @app.route('/simple')
-def simple_order_pizza():
+def simple_pizza_order():
     """Shows a simple order form."""
 
     # TODO: Render a form containing a text input asking the user for their
@@ -30,9 +30,10 @@ def simple_order_pizza():
 def simple_pizza_results():
     """Processes & shows results for a simple order form."""
 
-    # TODO: 
+    # TODO: Use `request.args.get()` to retrieve the user's pizza flavor, then 
+    # include it in the response.
 
-    return "Not Yet Implemented"
+    return "Your order has been received!"
 
 @app.route('/complex')
 def complex_order_pizza():
@@ -100,7 +101,7 @@ def complex_order_pizza():
 def submit_pizza():
     """Processes & shows results for a complex pizza order form."""
 
-    # TODO: Comment out the following lines to see the form key/value pairs
+    # TODO: Uncomment the following lines to see the form key/value pairs
     # print('------------------- REQUEST.ARGS -------------------------)
     # print(request.args)
     # print('----------------------------------------------------------)
