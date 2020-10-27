@@ -20,11 +20,17 @@ def home():
 @app.route('/simple')
 def simple_pizza_order():
     """Shows a simple order form."""
+    
+    # TOOD: Change the form element below to include action="/simple_results" 
+    # and method="POST"
 
-    # TODO: Render a form containing a text input asking the user for their
-    # favorite pizza flavor, and a submit button.
-
-    return "Not Yet Implemented"
+    return """
+    <form>
+    What's your favorite pizza flavor?
+    <input type="text" name="pizza_flavor">
+    <input type="submit" value="Submit">
+    </form>
+    """
 
 @app.route('/simple_results', methods=['GET', 'POST'])
 def simple_pizza_results():
