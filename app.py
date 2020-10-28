@@ -25,7 +25,7 @@ def simple_pizza_order():
     # and method="POST"
 
     return """
-    <form>
+    <form action="/simple_results" method="POST">
     What's your favorite pizza flavor?
     <input type="text" name="pizza_flavor">
     <input type="submit" value="Submit">
@@ -35,11 +35,12 @@ def simple_pizza_order():
 @app.route('/simple_results', methods=['GET', 'POST'])
 def simple_pizza_results():
     """Processes & shows results for a simple order form."""
+    print(request.form)
 
-    # TODO: Use `request.args.get()` to retrieve the user's pizza flavor, then 
-    # include it in the response.
-
-    return "Your order has been received!"
+    user_pizza_flavor = request.form.get('pizza_flavor')
+    return f"""Your order has been received! <br>
+    You order {user_pizza_flavor} flavored pizza!
+    """
 
 @app.route('/complex')
 def complex_pizza_order():
@@ -49,7 +50,7 @@ def complex_pizza_order():
     <h1>Welcome to PIZZA PIZZA ordering</h1>
     <p>We deliver your pizza in 40 minutes max. If not - Pizza's on us!</p>
     <p>Your details:</p>
-    <form action="/complex_results", method="GET">
+    <form action="/complex_results" method="GET">
     <p>
         <label for="email">Email:</label><br>
         <input type="email" name="email" placeholder="ex: myname@example.com">
@@ -108,16 +109,16 @@ def complex_pizza_results():
     """Processes & shows results for a complex pizza order form."""
 
     # TODO: Uncomment the following lines to see the form key/value pairs
-    # print('------------------- REQUEST.ARGS -------------------------')
-    # print(request.args)
-    # print('----------------------------------------------------------')
+    print('------------------- REQUEST.ARGS -------------------------')
+    print(request.args)
+    print('----------------------------------------------------------')
 
-    users_email = '' # TODO: Replace me!
-    users_phone = '' # TODO: Replace me!
-    crust_type = '' # TODO: Replace me!
-    pizza_size = '' # TODO: Replace me!
+    users_email = request.args.get('email') # TODO: Replace me!
+    users_phone = request.args.get('phone') # TODO: Replace me!
+    crust_type = request.args.get('crust') # TODO: Replace me!
+    pizza_size = request.args.get('size') # TODO: Replace me!
     list_of_toppings = request.args.getlist('toppings')
-    accepted_terms = '' # TODO: Replace me!
+    accepted_terms = request.args.get('terms_conditions') # TODO: Replace me!
 
     if accepted_terms != 'accepted':
         return 'Please accept the terms and conditions and try again!'
@@ -133,3 +134,9 @@ def complex_pizza_results():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+# Notes
+# GET request can only request for value using "request.args"
+# POST request can only request for value using "request.form"
